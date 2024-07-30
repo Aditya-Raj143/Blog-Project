@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    
+    padding: 0;
+    
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+html { 
+    background-color: white; 
+    background-image: linear-gradient(to top right,#93F9E6,#B8D4F4,#9FACE6);
+}
+
+body {
+    min-height: 100vh;
+    max-width: 60%;
+    margin: 0 auto;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0;
+}
+
+.nav-element {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin: auto;
+    margin-top: 35px;
+    border-radius: 15px;
+    max-height: 65px;
+    box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+.title1 {
+    margin-left: 30px;
+    font-size: 1.5em;
+    font-weight: 400;
+    text-shadow: 0px 2px 4px #8d8989;
+}
+
+.menu-box {
+    margin-right: 30px;
+}
+
+.menu {
+    display: flex;
+    gap: 2vw;
+    justify-content: space-evenly;
+    align-items: center;   
+}
+
+.invis {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:"slnt" 0;
+    text-shadow: 0px 2px 4px #8d8989;
+    font-size: 1.1em;
+}
+
+.invis:hover {
+    color: #4b4848;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.nav-margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.nav-margin p:hover {
+    cursor: pointer;
+    color: #4b4848;
+}
+
+.header {
+    margin-top: 70px;
+}
+
+.body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: x-large;
+}
+
+.image1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    margin-top: 40px;
+    height: 400px;
+    width: 700px;
+}
+
+.desc {
+    max-width: 50%;
+}   
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    min-width: 33%; 
+}
+
+.button1 {
+    padding: 15px;
+    background-color: #93f1ee;
+    min-height: 60px;
+    min-width: 140px;
+    border-radius: 20px;
+    border: none;
+    font-size: 28px;
+    font: bold;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button1:hover {
+    background-color: #77e4e0;
+}
+
+.hide {
+    display: none;
+}
+
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/blog.css">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="nav-main">
+    <div class="nav-element">
+        <div class="nav-margin">  
+            <p class="title1">BlogShare</p>
+        </div>
+        <div class="menu-box nav-margin">
+            <ul class="menu">
+                <form action="/" method="GET">
+                    <button class="invis">
+                        Home
+                    </button>
+                </form>
+                <form action="/about" method="GET"> 
+                    <button class="invis">
+                        About
+                    </button>
+                </form>
+                <form action="/profile" method="POST"> 
+                    <button class="invis">
+                        Profile
+                    </button>
+                </form>
+            </ul>
+        </div>
+    </div> 
+</div> 
+
+<div class="main-btn">
+    <button id="newbtn" class="new-post-btn" onclick="create()">New Post</button>
+    <button id="newbtn" class="delete-all-btn" onclick=" key()">Delete All</button>
+</div>
+
+<div class="container">
+    <% blogs.forEach(blog=> { %>
+        <div class="">
+            <div class="blog-box">
+                <div class="title blog-bg-color">
+                    <p><%= blog.title %></p>
+                </div>
+                <div class="blog blog-bg-color">
+                    <%= blog.blog %>
+                </div>
+                <div class="author blog-bg-color">
+                    <small> <%= blog.date %> </small>
+                    <small>by: <%= blog.author %></small>
+                </div>
+            </div>
+            <div class="edit">
+                <div>
+                    <a class="edit button" href="/edit/<%= blog.id %>">Edit</a>
+                    <a class="delete button" href="/delete/<%= blog.id %>">Delete</a>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+
+<form action="/new" method="get">
+<div id="modal" class="new-blog ">
+    <div class="abc">
+        <label for="blog">NEW BLOG!</label>
+        <p onclick="create()">&times;</p>
+    </div>
+    <input id="title2" type="text" name="title" placeholder="Enter The Title">    
+    <textarea value="author" name="blog" placeholder="Enter the Blog" id="blog"></textarea>
+    <input class="authorinput" name="authorinput" placeholder="Author's Name" type="text">
+    <div>
+        <button id="blog-submit">Submit</button>
+    </div>
+</div>
+</form>
+
+<div id="overlay"></div>
+
+<script>
+
+function create(){
+    const createbox = document.getElementById("modal")
+    const overlay = document.getElementById("overlay")
+    const closebox = document.getElementById("cross-button")
+    createbox.classList.toggle("active")
+    overlay.classList.toggle("active")
+}
+
+function key(){
+    var Key = prompt("Enter the API Key")
+    location.href=`/deleteall/?key=${Key}`;
+}
+
+</script>
+
+<% if (popup) { %>
+    <script>
+        alert("post deleted successfully")
+    </script>
+<% } %>
+
+</body>
+</html>

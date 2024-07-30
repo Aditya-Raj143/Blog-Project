@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="nav-main">
+        <div class="nav-element">
+            <div class="nav-margin">  
+                <p class="title1" onclick="location.href='/'">BlogShare</p>
+            </div>
+            <div class="menu-box nav-margin">
+                <ul class="menu">
+                    <form action="/" method="GET">
+                        <button class="invis">
+                            Home
+                        </button>
+                    </form>
+                    <form action="/about" method="GET"> 
+                        <button class="invis">
+                            About
+                        </button>
+                    </form>
+                    <form action="/profile" method="POST"> 
+                        <button class="invis">
+                            Profile
+                        </button>
+                    </form>
+                </ul>
+            </div>
+        </div> 
+    </div>
+
+<img class="image1" src="/img/blogs.png" alt="laptop">
+
+<h1 class="header">
+    Why BlogShare?
+</h1>
+
+<div class="body">
+    <div class="desc">
+        <p>
+            Welcome to BlogShare, your personal hub for creating, uploading, and managing your own blogs. Easily share your thoughts and stories    with our intuitive platform, where you can view and edit your posts anytime. Enjoy the privacy and flexibility of accessing your   content from any device, ensuring your blogging experience is tailored just for you. Join BlogShare today and start documenting your  journey!
+        </p>
+    </div>
+    
+    <div class="buttons">
+        <form action="/loginpage" method="get">
+            <button id="toggle" class="button1 ">
+                Login
+            </button>
+        </form>
+        <form action="/blogs" method="get">
+            <button id="toggle1" class="button1 hide">
+                My Blogs
+            </button>
+        
+    </div>  
+
+</div>
+<% if(locals.loggedIn) { %>
+    <script>
+        document.getElementById("toggle").classList.toggle("hide")
+        document.getElementById("toggle1").classList.toggle("hide")
+    </script>
+<%}%>
+</body>
+</html>
+

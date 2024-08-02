@@ -37,18 +37,19 @@ app.get("/blogs", (req,res)=> {
     res.json(blogs)
 })
 
-app.post("/new", (req,res)=> {
-    const id = lastId+=1;
+app.patch("/new", (req,res)=> {
+    const newid = lastId+=1;
     const blog = {
-        id: id,
+        id: newid,
         title: req.body.title,
         blog: req.body.blog,
         author: req.body.author,
         date: new Date(),
     }
-    lastId= id;
+    lastId = newid;
     blogs.push(blog);
-    res.json(blog)
+    console.log(blogs)
+    res.json(blogs)
 })
 
 app.get("/edit/:id", (req,res)=> {

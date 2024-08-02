@@ -6,14 +6,12 @@ const app = express();
 const port = 3000;
 var loggedIn = false;
 const API = "http://localhost:4000"
-const MasterKey = "SNAP"
+const MasterKey = "SNAP";
 
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 var logic = false
-
-let lastId = 3;
 
 app.get("/", (req,res) => {
     // console.log(loggedIn)
@@ -30,7 +28,8 @@ app.post("/login", (req,res) => {
         res.redirect("/")
     }
     else { 
-        res.render("login.ejs")
+        const status = true;
+        res.render("login.ejs",{status})
     }
     
 })
@@ -41,17 +40,17 @@ app.post("/login", (req,res) => {
 app.get("/blogs", async (req,res)=> {
     try {
         const response = await axios.get(`${API}/blogs`)
-        logic = false
-        res.render("blog.ejs", {blogs: response.data,popup: logic})
+        res.render("blog.ejs", {blogs: response.data})
     } catch (error) {
         res.status(500).json({ message: "Error fetching posts" });
     }
 })
 
 //new post
-app.get("/new", async (req,res) => {
+app.post("/new", async (req,res) => {
     try {
-        const response = await axios.post(`${API}/new`,req.body)
+        const response = await axios.patch(`${API}/new`,req.body)
+        console.log(req.body)
         res.redirect("/blogs")
     } catch (error) {
         res.status(500).json({ message: "Error creating post" });
@@ -85,10 +84,7 @@ app.post("/api/blogs/:id", async (req,res)=> {
 app.get("/delete/:id", async (req,res)=> {
     try {
         const message = await axios.delete(`${API}/delete/${parseInt(req.params.id)}`)
-        const response = await axios.get(`${API}/blogs`)
-        console.log(message)
-        logic = true 
-        res.render("blog.ejs", {blogs: response.data,popup: logic})
+        res.redirect("/blogs")
     } catch (error) {
         res.status(500).json({ message: "Error deleting post" });
     }
